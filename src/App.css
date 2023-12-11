@@ -16,11 +16,11 @@
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #e75f04; 
+  background: #d80303; 
   border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #db5e0ad8;
+  background: #b10a0a;
 }

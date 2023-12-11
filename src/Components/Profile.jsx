@@ -52,7 +52,7 @@ const Profile = () => {
         <div className="profile-complete-data-container">
           <div className="profile-image-container">
             <CardMedia
-              sx={{ height: 450, width: 450 }}
+              sx={{ height: 770, width: 500 }}
               image={user.image ? user.image : alt}
               title="green iguana"
             />

@@ -5,9 +5,8 @@
     margin-top: 100px;
     overflow: auto;
     padding-bottom: 8%;
-    background-image: url("https://c1.wallpaperflare.com/preview/204/538/570/wedding-rings-marriage-love-jewelry.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background-image: radial-gradient( circle 763px at 18.3% 24.1%,  rgba(255,249,137,1) 7.4%, rgba(226,183,40,1) 58.3% );
+   
 }
 .fav-title{
     width: 100%;
