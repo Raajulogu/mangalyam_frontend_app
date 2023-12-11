@@ -1,0 +1,13 @@
+
+.base-container{
+    height: 100vh;
+    overflow: hidden;
+}
+.base-header{
+    position: fixed;
+    top: 0;
+    width:100vw;
+}
+.main-child{
+    margin-top: 0px;
+}

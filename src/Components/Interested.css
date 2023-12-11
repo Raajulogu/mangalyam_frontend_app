@@ -1,0 +1,94 @@
+.interested-container{
+    min-height: 100vh;
+    max-height:100vh;
+    margin-top:100px ;
+    overflow: auto;
+    padding-bottom: 8%;
+    background-image: url("https://c1.wallpaperflare.com/preview/204/538/570/wedding-rings-marriage-love-jewelry.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.interested-box{
+    border-radius: 50px 0px 0px 0px;
+    height: 100vh;
+    padding-top: 20px;
+    border-right: 1px solid black;
+}
+.profile-container-interested{
+    padding: 3%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.request-box{
+    margin-left:5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border-left: 2px solid rgb(206, 206, 206);
+    background-color: aliceblue;
+    position: relative;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+.invitation-got,.invitation-sent{
+    background-color: transparent;
+    backdrop-filter: blur(100px);
+    height: 40vh;
+    flex-wrap: wrap;
+    width:100%;
+    overflow: auto;
+    border-bottom: 3px solid rgb(102, 102, 102);
+}
+.request-container{
+    width: 100%;
+    padding:3% 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid rgb(102, 102, 102);
+    margin-bottom: 5px;
+    border-radius:15px;
+}
+.requset-user-data{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+}
+.request-data{
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+}
+.request-btn-box{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.request-btns{
+    margin: 1% 5%;
+}
+.request-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.invitation-title{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left:5%;
+}
+.card-box{
+    margin: 3%;
+}
+@media only screen and (max-width: 900px){
+    .interested-container{
+        margin-top:70px ;
+        padding-bottom: 20%;
+    }
+    .interested-box{
+        border-bottom: 3px solid black;
+    }
+}

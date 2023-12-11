@@ -1,0 +1,49 @@
+.signup-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+    background-image: url("https://media.istockphoto.com/id/1303189272/photo/the-bride-and-groom-use-the-little-finger-together-lovely-couple-hold-hand-with-sunset.jpg?s=612x612&w=0&k=20&c=JV_ti6dGbPKf0g-mvcLQ1pKAfgP45P2OuK0bU1u8mcQ=");
+    background-size: cover;
+}
+.signup-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 35%;
+    min-height:40%;
+    background-image: url("https://www.narjisinfotech.com/images/matrimony-blog-img.jpg");
+    background-size:cover;
+    padding:10px 0px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 5px;
+    animation:signup-box;
+    animation-duration: 4s;
+}
+@keyframes signup-box{
+    from{
+        transform: translateY(110%);
+    }
+}
+.signup-form{
+    margin:0px 20px;
+    display: flex;
+    flex-direction: column;
+    width:80%;
+}
+.gender-box{
+    display: flex;
+    flex-direction: row;
+}
+.gender-input{
+    margin: 0 10%;
+}
+.dob-box{
+    display: flex;
+    flex-direction: row;
+}
+.dob-input{
+    margin: 0 5%;
+}

@@ -1,0 +1,51 @@
+.about-us-container{
+    max-width: 100vw;
+    min-height: 100vh;
+    max-height:100vh;
+    margin-top:5% ;
+    overflow: auto;
+    padding-bottom: 8%;
+    background-image: url("https://c1.wallpaperflare.com/preview/204/538/570/wedding-rings-marriage-love-jewelry.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.about-us-box{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2%;
+}
+.about-us-image{
+    width: 70%;
+    margin-bottom:3%;
+}
+.about-us-data{
+    font-size: 25px;
+    width: 70%;
+    text-align: justify;
+    background-color: white;
+    padding: 2%;
+    border-radius: 20px;
+}
+.about-us-slogan{
+    color: rgb(243, 70, 17);
+    padding-left: 10%;
+    font-weight: bolder;
+}
+@media only screen and (max-width: 900px){
+    .about-us-container{
+        margin-top:70px ;
+        padding-bottom: 20%;
+    }
+    .about-us-box{
+        width:100%;
+    }
+    .about-us-data{
+        width:90%;
+    }
+    .about-us-image{
+        width: 90%;
+        margin-bottom:3%;
+    }
+}
