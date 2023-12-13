@@ -94,10 +94,8 @@ const Dashboard = () => {
             <div className="searched-content">
               {otherProfiles.map((val, index) => (
                 <div className="searched-data">
-                  {(val.name.includes(search.toLowerCase()) ||
-                    val.name.includes(search.toUpperCase()) ||
-                    val.City.includes(search.toLowerCase()) ||
-                    val.City.includes(search.toUpperCase())) && (
+                  {(val.name.toLowerCase().includes(search.toLowerCase()) ||
+                    val.City.toLowerCase().includes(search.toLowerCase())) && (
                     <Profiles key={index} data={val} user={user} />
                   )}
                 </div>

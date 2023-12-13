@@ -46,7 +46,6 @@ const Favourites = () => {
     };
     //Calling fetch function
     fetchAllData();
-    console.log(profiles);
   }, []);
 
   return (

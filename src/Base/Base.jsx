@@ -68,7 +68,7 @@ const Base = ({ children }) => {
     };
     //Calling fetch function
     fetchAllData();
-    console.log(user)
+    
   }, []);
 
   return (

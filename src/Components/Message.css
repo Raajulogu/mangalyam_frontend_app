@@ -7,6 +7,7 @@
     background-image: radial-gradient( circle 763px at 18.3% 24.1%,  rgba(255,249,137,1) 7.4%, rgba(226,183,40,1) 58.3% );
     justify-content: center;
     overflow: auto;
+    margin-bottom: 500px;
 }
 .message-user-title{
     width: 100%;
@@ -17,6 +18,9 @@
     border-bottom: 1px solid black;
     background-color: rgb(229, 233, 233);
 }
+.none{
+    display: none;
+}
 .message-left-box{
     width:700px;
     min-height: 90vh;
@@ -26,6 +30,7 @@
     width:800px;
     min-height: 90vh;
     max-height: 90vh;
+    overflow: hidden;
 }
 .message-profiles{
     background-image: url("https://e1.pxfuel.com/desktop-wallpaper/299/197/desktop-wallpaper-whats-app-posted-by-zoey-tremblay-whatsapp-chat.jpg");
@@ -97,10 +102,41 @@
     display: flex;
     justify-content: flex-end;
 }
+.msg-back-arrow{
+    margin-right: 15px;
+    cursor: pointer;
+}
+.msg-date-box{
+    padding-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.msg-date{
+    background-color: rgb(190, 190, 190);
+    padding: 5px;
+    border-radius: 10px;
+}
 .message-content-box{
     margin: 2%;
     padding:2%;
     box-shadow: 4px 3px 10px 2px;
+}
+.msg-box-insiders{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.messages{
+    margin: 0;
+}
+.msg-time{
+    font-size: 11px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0;
+    margin: 0;
+    color: rgb(69, 69, 70);
 }
 .message-top{
     overflow: auto;
@@ -124,6 +160,13 @@
     height:80px ;
     position: fixed;
     bottom: 0;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.msg-input{
+    margin: 5px;
+    width: 770px;
 }
 @media only screen and (max-width: 900px){
     .message-container{
@@ -139,5 +182,9 @@
         width:800px;
         min-height: 90vh;
         max-height: 90vh;
+    }
+    .msg-input{
+        margin: 5;
+        width: 350px;
     }
 }

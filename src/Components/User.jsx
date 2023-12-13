@@ -45,7 +45,7 @@ const User = () => {
             "x-auth": token,
           },
         });
-        console.log(response.data.user);
+        
         setUser(response.data.user);
         setName(response.data.user.name);
         setFatherName(response.data.user.fatherName);

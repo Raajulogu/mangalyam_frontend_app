@@ -7,6 +7,7 @@ import { Avatar, IconButton, InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import SendIcon from "@mui/icons-material/Send";
 import asserts from "../assert";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 //Backend URL
 const api_url = asserts.backend_url;
@@ -18,6 +19,8 @@ const Message = () => {
   let [messageId, setMessageId] = useState(null);
   let [msgsent, setMsgsent] = useState(0);
   let [search, setSearch] = useState("");
+  let [show,setShow]=useState(false);
+  let [showProfile,setShowProfile]=useState(false);
 
   useEffect(() => {
     let token = localStorage.getItem("token");
@@ -86,11 +89,12 @@ const Message = () => {
     //Calling fetch function
     fetchAllData();
   }, [msgsent]);
+  console.log(search,search.length);
 
   return (
     <Base>
       <div className="message-container">
-        <div className="message-left-box">
+        <div className={`message-left-box ${messageId ? "none":"Show-profile"}`}>
           <div className="profile-container-1 message-profiles">
             <div className="message-user-title">
               <Avatar alt="" src={user.image} />
@@ -116,8 +120,7 @@ const Message = () => {
                 {profiles.length ? (
                   profiles.map((val, index) => (
                     <>
-                      {(val.name.includes(search.toLowerCase()) ||
-                        val.name.includes(search.toUpperCase())) && (
+                      {val.name.toLowerCase().includes(search.toLowerCase()) && (
                         <Profiles
                           key={index}
                           data={val}
@@ -147,7 +150,7 @@ const Message = () => {
             )}
           </div>
         </div>
-        <div className="message-right-box">
+        <div className={`message-right-box ${messageId ? "Show-profile":"none"}`}>
           <div className="profile-container-1 user-messages">
             {messageId && (
               <Messages
@@ -155,6 +158,7 @@ const Message = () => {
                 user={user}
                 setMsgsent={setMsgsent}
                 msgsent={msgsent}
+                setMessageId={setMessageId}
               />
             )}
           </div>
@@ -191,10 +195,11 @@ const Profiles = ({ data, setMessageId }) => {
   );
 };
 
-const Messages = ({ messageId, user, setMsgsent, msgsent }) => {
+const Messages = ({ messageId, user, setMsgsent, msgsent,setMessageId }) => {
   let [alt, setAlt] = useState("");
   let [id, setId] = useState("");
   let [message, setMessage] = useState("");
+  let [msgData, setMsgData] = useState([]);
   let token = localStorage.getItem("token");
 
   useEffect(() => {
@@ -208,15 +213,47 @@ const Messages = ({ messageId, user, setMsgsent, msgsent }) => {
   }, []);
 
   useEffect(() => {
+    console.log(user)
     setId(messageId._id);
   }, [messageId]);
+  useEffect(() => {
+    let val=[];
+    id && user.message && user.message[id] && user.message[id].map((res)=>{
+      if(val.length===0){
+        val.push([res])
+      }
+      else{
+        if(res.date===val[val.length-1][0].date){
+          val[val.length-1].push(res)
+        }
+        else{
+          val.push([res])
+        }
+      }
+    })
+    setMsgData([...val]);
+  }, [id]);
 
   //Handle Send Message
   async function handleMessage({ id }) {
+    let day = new Date();
+    let date=`${day.getDate()}/${day.getMonth()+1}/${day.getFullYear()}`
+    let time=`${day.getHours()}:${day.getMinutes()} AM`
+    if(day.getHours()>12){
+      time=`${day.getHours()-12}:${day.getMinutes()} PM`
+    }
+    if(day.getMinutes()<10){
+      time=`${day.getHours()-12}:0${day.getMinutes()} AM`
+      if(day.getHours()>12){
+        time=`${day.getHours()-12}:0${day.getMinutes()} PM`
+      }
+    }
     if (message.length) {
       let data = {
         id: user._id,
         message,
+        date,
+        time
       };
       let val = {
         data,
@@ -229,8 +266,8 @@ const Messages = ({ messageId, user, setMsgsent, msgsent }) => {
           },
         });
         setMessage("");
-        setId(messageId._id);
         setMsgsent(msgsent + 1);
+        setId(messageId._id);
       } catch (error) {
         console.error("Error In Fetching Data:", error);
       }
@@ -239,6 +276,10 @@ const Messages = ({ messageId, user, setMsgsent, msgsent }) => {
   return (
     <div className="user-message-container">
       <div className="profile-details">
+      <ArrowBackIcon
+          onClick={()=>{setMessageId(null)}}
+          className="msg-back-arrow"
+          />
         <div>
           <Avatar alt={alt} src={messageId.image} />
         </div>
@@ -251,25 +292,46 @@ const Messages = ({ messageId, user, setMsgsent, msgsent }) => {
       <div className="message-top">
         <div className="profile-messages">
           {id &&
-            user.message&&user.message[id] &&
-            user.message[id].map((val, index) => (
-              <div key={index} className="message-content">
+            msgData.map((val, index) => (
+              <div>
                 <div
-                  className={
-                    val.id === user._id ? "message-right" : "message-left"
-                  }
+                className="msg-date-box"
                 >
+                <p
+                className="msg-date"
+                >{val[0].date}</p>
+                </div>
+                {val && val.map((res, index) =>(
+                  <div key={index} className="message-content">
                   <div
-                    className="message-content-box"
-                    id={
-                      val.id === user._id
-                        ? "message-right-color"
-                        : "message-left-color"
+                    className={
+                      res.id === user._id ? "message-right" : "message-left"
                     }
                   >
-                    {val.message}
+                    <div
+                      className="message-content-box"
+                      id={
+                        res.id === user._id
+                          ? "message-right-color"
+                          : "message-left-color"
+                      }
+                    >
+                      <div
+                      className="msg-box-insiders"
+                      >
+                      <p
+                      className="messages"
+                      >{res.message}</p>
+                      <p
+                      className="msg-time"
+                      >{res.time}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
+                ))
+
+                }
               </div>
             ))}
         </div>
@@ -277,7 +339,7 @@ const Messages = ({ messageId, user, setMsgsent, msgsent }) => {
       <div className="send-message message-bottom">
         <TextField
           label="Message"
-          sx={{ m: 5, width: "72ch" }}
+          className="msg-input"
           placeholder="Type your message"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
