@@ -78,6 +78,7 @@ const Email = ({ value, setValue }) => {
       name: user.name,
       from_name: "rajeshkumarlogu145@gamil.com",
       message_html: msg,
+      app:"Mangalyam Matrimony"
     };
     await emailjs.send("service_5tm7opw", "template_ebkvuvq", templateParams);
     setEncrypt(msg);

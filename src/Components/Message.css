@@ -7,7 +7,6 @@
     background-image: radial-gradient( circle 763px at 18.3% 24.1%,  rgba(255,249,137,1) 7.4%, rgba(226,183,40,1) 58.3% );
     justify-content: center;
     overflow: auto;
-    margin-bottom: 500px;
 }
 .message-user-title{
     width: 100%;
@@ -186,5 +185,9 @@
     .msg-input{
         margin: 5;
         width: 350px;
+    }
+    .message-top{
+        overflow: auto;
+        margin-bottom: 0px;
     }
 }

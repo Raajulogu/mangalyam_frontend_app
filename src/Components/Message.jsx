@@ -89,7 +89,6 @@ const Message = () => {
     //Calling fetch function
     fetchAllData();
   }, [msgsent]);
-  console.log(search,search.length);
 
   return (
     <Base>
@@ -213,7 +212,6 @@ const Messages = ({ messageId, user, setMsgsent, msgsent,setMessageId }) => {
   }, []);
 
   useEffect(() => {
-    console.log(user)
     setId(messageId._id);
   }, [messageId]);
   useEffect(() => {
@@ -232,6 +230,7 @@ const Messages = ({ messageId, user, setMsgsent, msgsent,setMessageId }) => {
       }
     })
     setMsgData([...val]);
+    console.log(val)
   }, [id]);
 
   //Handle Send Message
