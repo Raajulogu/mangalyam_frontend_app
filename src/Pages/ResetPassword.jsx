@@ -158,7 +158,7 @@ const NewPassword = () => {
       };
 
       try {
-        await axios.put(`http://localhost:3030/api/auth/reset-password`, obj);
+        await axios.put(`${api_url}/auth/reset-password`, obj);
         navigate("/login");
       } catch (error) {
         console.error("Error In Fetching Data:", error);
