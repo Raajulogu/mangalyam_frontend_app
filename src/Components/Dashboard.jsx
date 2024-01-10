@@ -50,6 +50,7 @@ const Dashboard = () => {
         setOtherProfiles(response.data.profileData.allProfiles);
       } catch (error) {
         console.error("Error In Fetching Data:", error);
+        localStorage.removeItem("token");
       }
       //Get User Data
       try {
